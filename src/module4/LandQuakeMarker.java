@@ -18,6 +18,7 @@ public class LandQuakeMarker extends EarthquakeMarker {
 		super(quake);
 		
 		isOnLand = true;
+		SetCheckPoint(new CircleShapeCheck());
 	}
 
 

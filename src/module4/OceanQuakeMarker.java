@@ -15,8 +15,8 @@ public class OceanQuakeMarker extends EarthquakeMarker {
 		super(quake);
 		
 		isOnLand = false;
+		SetCheckPoint(new RectShapeCheck());
 	}
-	
 
 	@Override
 	public void drawEarthquake(PGraphics pg, float x, float y) {

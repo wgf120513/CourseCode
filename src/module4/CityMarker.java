@@ -19,13 +19,14 @@ public class CityMarker extends CommonMarker {
 	public CityMarker(Location location) {
 		super(location);
 	}
-	
-	
+
+
 	public CityMarker(Feature city) {
 		super(((PointFeature)city).getLocation(), city.getProperties());
+		SetCheckPoint(new TrangleShapeCheck());
 	}
-	
-	
+
+
 	/**
 	 * 在地图上绘制标记
 	 */

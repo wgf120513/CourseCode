@@ -15,6 +15,8 @@ public abstract class CommonMarker extends SimplePointMarker {
 
 	// 记录该标记是否最近被点击过
 	protected boolean clicked = false;
+
+	public ICheckPoint CheckPonit;
 	
 	public CommonMarker(Location location) {
 		super(location);
@@ -40,6 +42,10 @@ public abstract class CommonMarker extends SimplePointMarker {
 				showTitle(pg, x, y);
 			}
 		}
+	}
+	public void SetCheckPoint(ICheckPoint checkPonit)
+	{
+		this.CheckPonit=checkPonit;
 	}
 	public abstract void drawMarker(PGraphics pg, float x, float y);
 	public abstract void showTitle(PGraphics pg, float x, float y);

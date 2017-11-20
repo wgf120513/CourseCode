@@ -145,6 +145,11 @@ public class EarthquakeCityMap extends PApplet {
 	private void selectMarkerIfHover(List<Marker> markers)
 	{
 		// TODO: 实现这个方法
+		if (markers.isEmpty()) return;
+		for (Marker marker : markers)
+		{
+
+		}
 	}
 
 	
@@ -320,5 +325,7 @@ public class EarthquakeCityMap extends PApplet {
 		}
 		return false;
 	}
-
+	public static void main(String[] args){
+		PApplet.main(new String[] {"--present", "module4.EarthquakeCityMap"});
+	}
 }
