@@ -18,14 +18,16 @@ public class LandQuakeMarker extends EarthquakeMarker {
 		super(quake);
 		
 		isOnLand = true;
-		SetCheckPoint(new CircleShapeCheck());
+		SetCheckPoint(new CircleShapeCheck(this));
 	}
 
 
 	@Override
 	public void drawEarthquake(PGraphics pg, float x, float y) {
 		pg.ellipse(x, y, 2*radius, 2*radius);
-		
+		CheckPonit.PointList.clear();
+		CheckPonit.PointList.add(new Point(x, y));
+		CheckPonit.PointList.add(new Point(2*radius, 2*radius));
 	}
 	
 

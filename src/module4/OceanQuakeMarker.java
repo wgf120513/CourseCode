@@ -15,11 +15,15 @@ public class OceanQuakeMarker extends EarthquakeMarker {
 		super(quake);
 		
 		isOnLand = false;
-		SetCheckPoint(new RectShapeCheck());
+		SetCheckPoint(new RectShapeCheck(this));
 	}
 
 	@Override
-	public void drawEarthquake(PGraphics pg, float x, float y) {
+	public void drawEarthquake(PGraphics pg, float x, float y)
+	{
 		pg.rect(x-radius, y-radius, 2*radius, 2*radius);
+		CheckPonit.PointList.clear();
+		CheckPonit.PointList.add(new Point(x, y));
+		CheckPonit.PointList.add(new Point(x+2*radius, y+2*radius));
 	}
 }

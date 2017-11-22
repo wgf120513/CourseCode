@@ -1,5 +1,6 @@
 package module4;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,8 +92,8 @@ public class EarthquakeCityMap extends PApplet {
 	    for(PointFeature feature : earthquakes) {
 	      //检查是否为LandQuake
 		  if(isLand(feature)) {
-		    quakeMarkers.add(new LandQuakeMarker(feature));
-		  }
+				quakeMarkers.add(new LandQuakeMarker(feature));
+			}
 		  // OceanQuakes
 		  else {
 		    quakeMarkers.add(new OceanQuakeMarker(feature));
@@ -148,7 +149,14 @@ public class EarthquakeCityMap extends PApplet {
 		if (markers.isEmpty()) return;
 		for (Marker marker : markers)
 		{
-
+			CommonMarker Cmarker=(CommonMarker)marker;
+			if (Cmarker.CheckPonit.CheckPointIsArea(new Point(mouseX,mouseY)))
+			{
+				//真，表示有标记
+				lastSelected=Cmarker;
+				lastSelected.setSelected(true);
+				return;
+			}
 		}
 	}
 
@@ -161,13 +169,20 @@ public class EarthquakeCityMap extends PApplet {
 	public void mouseClicked()
 	{
 		// TODO: 实现这个方法
+		if (lastSelected instanceof CityMarker)
+			checkCitiesForClick();
+		else
+			checkEarthquakesForClick();
+
+		unhideMarkers();
 	}
-	
+
 	// 辅助方法：用于检查某个城市标记是否被点击
 	@SuppressWarnings("unused")
 	private void checkCitiesForClick()
 	{
-		// TODO: 实现这个方法	
+		// TODO: 实现这个方法
+
 	}
 	
 	// 辅助方法：用于检查某个地震标记是否被点击

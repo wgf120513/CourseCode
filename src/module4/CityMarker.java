@@ -6,6 +6,8 @@ import de.fhpotsdam.unfolding.geo.Location;
 import processing.core.PConstants;
 import processing.core.PGraphics;
 
+import java.util.ArrayList;
+
 /** 实现地震地图中城市的可视化标记
  * 
  * @author tang
@@ -23,7 +25,7 @@ public class CityMarker extends CommonMarker {
 
 	public CityMarker(Feature city) {
 		super(((PointFeature)city).getLocation(), city.getProperties());
-		SetCheckPoint(new TrangleShapeCheck());
+		SetCheckPoint(new TrangleShapeCheck(this));
 	}
 
 
@@ -37,7 +39,11 @@ public class CityMarker extends CommonMarker {
 		// 为每个城市绘制一个三角形标记
 		pg.fill(150, 30, 30);
 		pg.triangle(x, y-TRI_SIZE, x-TRI_SIZE, y+TRI_SIZE, x+TRI_SIZE, y+TRI_SIZE);
-		
+		CheckPonit.PointList.clear();
+		CheckPonit.PointList.add(new Point(x, y-TRI_SIZE));
+		CheckPonit.PointList.add(new Point(x-TRI_SIZE, y+TRI_SIZE));
+		CheckPonit.PointList.add(new Point(x+TRI_SIZE, y+TRI_SIZE));
+
 		// 恢复之前的绘制风格
 		pg.popStyle();
 	}

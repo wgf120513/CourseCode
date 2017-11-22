@@ -8,11 +8,11 @@ import java.util.List;
  */
 public abstract class ICheckPoint
 {
-    protected ArrayList<Float> PointList;
+    protected ArrayList<Point> PointList;
     public CommonMarker CMarker;
     public ICheckPoint()
     {
-        this.PointList=new ArrayList<Float>();
+        this.PointList=new ArrayList<Point>();
     }
     public ICheckPoint(CommonMarker marker)
     {
@@ -21,5 +21,8 @@ public abstract class ICheckPoint
     }
 
     public abstract boolean CheckPointIsArea(float point1,float point2);
+    public abstract boolean CheckPointIsArea(Point point);
+
 
 }
+

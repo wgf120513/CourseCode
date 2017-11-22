@@ -1,6 +1,7 @@
 package module4;
 
 import de.fhpotsdam.unfolding.data.PointFeature;
+import processing.core.PConstants;
 import processing.core.PGraphics;
 
 /** 实现一个地震图上的地震可视化标记
@@ -94,6 +95,17 @@ public abstract class EarthquakeMarker extends CommonMarker
 	public void showTitle(PGraphics pg, float x, float y)
 	{
 		// TODO: 实现此方法
+		String name = getTitle() ;
+		pg.pushStyle();
+
+		pg.fill(255, 255, 255);
+		pg.textSize(12);
+		pg.rectMode(PConstants.CORNER);
+		pg.rect(x, y, pg.textWidth(name) + 6, 39);
+		pg.fill(0, 0, 0);
+		pg.textAlign(PConstants.LEFT, PConstants.TOP);
+		pg.text(name, x+3, y);
+		pg.popStyle();
 		
 	}
 
