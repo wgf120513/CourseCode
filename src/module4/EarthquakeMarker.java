@@ -167,8 +167,6 @@ public abstract class EarthquakeMarker extends CommonMarker implements Comparabl
 
 	@Override
 	public int compareTo(CommonMarker o) {
-		if (this.getId().equals(o.getId()))
-			return 1;
-		return 0;
+		return (this.getId()).compareTo(o.getId());
 	}
 }
