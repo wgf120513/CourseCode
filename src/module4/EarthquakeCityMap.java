@@ -2,6 +2,7 @@ package module4;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import de.fhpotsdam.unfolding.UnfoldingMap;
@@ -17,6 +18,7 @@ import de.fhpotsdam.unfolding.providers.OpenStreetMap;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import parsing.ParseFeed;
 import processing.core.PApplet;
+import sun.jvm.hotspot.oops.Mark;
 
 /** EarthquakeCityMap
  *  交互式地图应用
@@ -99,6 +101,8 @@ public class EarthquakeCityMap extends PApplet {
 		    quakeMarkers.add(new OceanQuakeMarker(feature));
 		  }
 	    }
+	    int num=(int)random(0,quakeMarkers.size());
+		sortAndPrint(num);
 
 	    // 用于调试
 	    printQuakes();
@@ -121,9 +125,18 @@ public class EarthquakeCityMap extends PApplet {
 	
 	
 	// TODO: 添加方法
-	//   private void sortAndPrint(int numToPrint)
-	// 并在setUp中调用此方法
-	
+	   private void sortAndPrint(int numToPrint)
+	   {
+//		   并在setUp中调用此方法
+			List<EarthquakeMarker> earthquakeMarkers=new ArrayList<EarthquakeMarker>();
+		   for (Marker maker :quakeMarkers) {
+		   	earthquakeMarkers.add((EarthquakeMarker) maker);
+
+		   }
+		   Collections.sort(earthquakeMarkers);
+		   println(earthquakeMarkers.get(numToPrint));
+	   }
+
 	/** 鼠标移动时的事件处理器
 	 */
 	@Override

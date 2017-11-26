@@ -11,7 +11,7 @@ import processing.core.PGraphics;
  *
  */
 // TODO: 实现Comparable接口
-public abstract class EarthquakeMarker extends CommonMarker
+public abstract class EarthquakeMarker extends CommonMarker implements Comparable<CommonMarker>
 {
 	
 	// 地震是否发生在陆地上？
@@ -163,8 +163,12 @@ public abstract class EarthquakeMarker extends CommonMarker
 	{
 		return isOnLand;
 	}
-	
 
-	
-	
+
+	@Override
+	public int compareTo(CommonMarker o) {
+		if (this.getId().equals(o.getId()))
+			return 1;
+		return 0;
+	}
 }
